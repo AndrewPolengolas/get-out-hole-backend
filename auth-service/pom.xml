@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.getouthole</groupId>
-	<artifactId>controle-financeiro</artifactId>
+	<artifactId>auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>controle-financeiro</name>
+	<name>auth-service</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
