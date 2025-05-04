@@ -1,3 +1,7 @@
 spring:
   application:
     name: finance-service
+
+jwt:
+  secret: ${SECRET_TOKEN}
+  expiration: 86400000 # 1 dia em milissegundos
