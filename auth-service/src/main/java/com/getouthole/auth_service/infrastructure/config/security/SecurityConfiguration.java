@@ -28,11 +28,11 @@ public class SecurityConfiguration {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // libera endpoints públicos
+                        .requestMatchers("/api/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form // ← ativa o login por formulário padrão
-                        .loginPage("/login") // pode deixar sem isso agora para usar o padrão
+                .formLogin(form -> form
+                        .loginPage("/login")
                         .permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

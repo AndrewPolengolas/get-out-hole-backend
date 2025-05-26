@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
@@ -28,7 +29,9 @@ public class JwtService {
         return Jwts.builder()
                 .setSubject(user.getId().toString())
                 .claim("email", user.getEmail())
-                .claim("roles", user.getRoles())
+                .claim("roles", user.getRoles().stream()
+                        .map(role -> role.replace("ROLE_", "")) // remove se já vier com prefixo
+                        .collect(Collectors.toList()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
