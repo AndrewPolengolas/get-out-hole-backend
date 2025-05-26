@@ -48,10 +48,15 @@ public class JwtService {
         }
     }
 
-    public List<String> extractRoles(String token){
-        return extractAllClaims(token).get("roles", List.class);
-    }
+    public List<String> extractRoles(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(getSignKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
 
+        return claims.get("roles", List.class);
+    }
     private boolean isTokenExpired(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSignKey())

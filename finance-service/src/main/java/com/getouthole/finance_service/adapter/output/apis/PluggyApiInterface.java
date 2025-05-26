@@ -4,7 +4,7 @@ import reactor.core.publisher.Mono;
 
 public interface PluggyApiInterface {
 
-    Mono<String> pluggyDefineApiKey();
+    String pluggyDefineApiKey();
 
-    Mono<String> pluggyDefineConnectToken(String UserId, String apiKey);
+    String pluggyDefineConnectToken(String UserId, String apiKey);
 }
